@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const bodyParser = require("body-parser");
+const logger = require('./logging');
 const PORT = process.env.PORT || 3000;
 
 const activityRouter = require('./routes/activity-router');
@@ -12,14 +13,12 @@ const db = require('../db/db-connection');
 
 //middleware
 app.use(bodyParser.json())
+// app.use(logger);
 
-// app.get('/', (req, res)=>{
-  //   res.send('hello universe')
-  // })
   
-  //routes
-  app.use('/activity', activityRouter)
-  app.use('/logs', logRouter)
+//routes
+app.use('/activity', activityRouter)
+app.use('/logs', logRouter)
 
 
 

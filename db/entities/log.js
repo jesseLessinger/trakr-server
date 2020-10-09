@@ -5,7 +5,7 @@ const { save, get } = require('./helpers')
 const Entity = {}
 
 Entity.save = (data) => {
-  conditions = {}
+  conditions = { id: null}
   if (data.id){
     conditions = { id }
   }   

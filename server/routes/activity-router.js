@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   const { id } = req.body
+  console.log("fetching activities")
   Activity.get(id)
     .then((data)=>{
       res.send(data)
@@ -16,10 +17,11 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const data = req.body;
+  console.log("saving:", data)
   Activity.save(data)
-  .then((data)=>{
+  .then((results)=>{
     res.status(201)
-    res.send(data)
+    res.send(results)
   }).catch((err)=>{
     res.send(err)
   })
